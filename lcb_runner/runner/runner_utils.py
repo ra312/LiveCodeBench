@@ -55,6 +55,5 @@ def build_runner(args, model: LanguageModel):
             f"Runner for language model style {model.model_style} not implemented yet"
         )
     else:
-        from lcb_runner.runner.vllm_runner import VLLMRunner
+        raise ValueError("please specify different runner")
 
-        return VLLMRunner(args, model)
