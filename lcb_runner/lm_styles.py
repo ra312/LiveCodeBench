@@ -59,6 +59,13 @@ class LanguageModel:
 LanguageModelList: list[LanguageModel] = [
     ## LLama3 Base (8B and 70B)
     LanguageModel(
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        LMStyle.OpenAIChat,
+        datetime(2023, 1, 1),
+        link="https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
+    ),
+    LanguageModel(
         "meta-llama/Meta-Llama-3-70B",
         "LLama3-70b-Base",
         LMStyle.GenericBase,
