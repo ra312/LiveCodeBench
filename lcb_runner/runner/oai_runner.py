@@ -10,10 +10,13 @@ except ImportError as e:
 from lcb_runner.lm_styles import LMStyle
 from lcb_runner.runner.base_runner import BaseRunner
 
+from dotenv import load_dotenv
+_ = load_dotenv()
 
 class OpenAIRunner(BaseRunner):
     client = OpenAI(
-        api_key=os.getenv("OPENAI_KEY"),
+        api_key=os.getenv("FT_OPENAI_API_KEY"),
+        base_url=os.getenv("FT_OPENAI_API_URL"),
     )
 
     def __init__(self, args, model):
