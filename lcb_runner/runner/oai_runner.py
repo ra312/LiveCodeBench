@@ -10,9 +10,6 @@ except ImportError as e:
 from lcb_runner.lm_styles import LMStyle
 from lcb_runner.runner.base_runner import BaseRunner
 
-# FT_OPENAI_API_URL=http://103.231.86.145:42109/v1
-# FT_OPENAI_API_KEY=EMPTY
-# CONCURRENCY=3
 from dotenv import load_dotenv
 _ = load_dotenv()
 

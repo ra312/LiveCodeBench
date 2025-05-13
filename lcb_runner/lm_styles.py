@@ -65,14 +65,6 @@ LanguageModelList: list[LanguageModel] = [
         datetime(2023, 1, 1),
         link="https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct",
     ),
-    
-    LanguageModel(
-        "meta-llama/Meta-Llama-3-70B",
-        "LLama3-70b-Base",
-        LMStyle.GenericBase,
-        datetime(2023, 1, 1),
-        link="https://huggingface.co/meta-llama/Meta-Llama-3-70B",
-    ),
     LanguageModel(
         "meta-llama/Meta-Llama-3-70B",
         "LLama3-70b-Base",
