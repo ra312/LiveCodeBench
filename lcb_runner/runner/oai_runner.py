@@ -9,16 +9,22 @@ except ImportError as e:
 
 from lcb_runner.lm_styles import LMStyle
 from lcb_runner.runner.base_runner import BaseRunner
+import logging
+# Configure the logger (optional: set this once in your main module)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 from dotenv import load_dotenv
 _ = load_dotenv()
 
 class OpenAIRunner(BaseRunner):
+    base_url=os.getenv("FT_OPENAI_API_URL")
     client = OpenAI(
         api_key=os.getenv("FT_OPENAI_API_KEY"),
-        base_url=os.getenv("FT_OPENAI_API_URL"),
+        base_url=base_url,
     )
-
+    logger.info(f"Initializing OpenAI client with base_url: {base_url}")
     def __init__(self, args, model):
         super().__init__(args, model)
         if model.model_style == LMStyle.OpenAIReasonPreview:
