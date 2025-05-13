@@ -1,10 +1,14 @@
 from lcb_runner.lm_styles import LMStyle, LanguageModel
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 def build_runner(args, model: LanguageModel):
     if model.model_style == LMStyle.OpenAIChat:
         from lcb_runner.runner.oai_runner import OpenAIRunner
-
+        
+        logger.info(f"Building runner for model style: {model.model_style}")
         return OpenAIRunner(args, model)
     if model.model_style in [LMStyle.OpenAIReason, LMStyle.OpenAIReasonPreview]:
         from lcb_runner.runner.oai_runner import OpenAIRunner
@@ -55,6 +59,7 @@ def build_runner(args, model: LanguageModel):
             f"Runner for language model style {model.model_style} not implemented yet"
         )
     else:
-        from lcb_runner.runner.vllm_runner import VLLMRunner
+        pass
+        # from lcb_runner.runner.vllm_runner import VLLMRunner
 
-        return VLLMRunner(args, model)
+        # return VLLMRunner(args, model)
