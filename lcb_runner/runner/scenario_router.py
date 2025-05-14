@@ -1,5 +1,5 @@
 from typing import Union
-
+import logging
 from lcb_runner.utils.scenarios import Scenario
 from lcb_runner.lm_styles import LanguageModel
 from lcb_runner.evaluation import (
@@ -7,7 +7,7 @@ from lcb_runner.evaluation import (
     test_output_metrics,
     code_execution_metrics,
 )
-
+logging.basicConfig(level=logging.INFO)
 from lcb_runner.prompts import (
     format_prompt_generation,
     format_prompt_test_output,
@@ -52,11 +52,18 @@ def build_prompt_benchmark(
         if not_fast:
             benchmark = load_code_generation_dataset_not_fast(args.release_version)
         else:
+
+            logging.info("Calling load_code_generation_dataset with parameters:")
+            logging.info("release_version = %s", args.release_version)
+            logging.info("start_date = %s", args.start_date)
+            logging.info("end_date = %s", args.end_date)
+
             benchmark = load_code_generation_dataset(
-                args.release_version,
+                release_version=args.release_version,
                 start_date=args.start_date,
                 end_date=args.end_date
             )
+
         benchmark = sorted(benchmark, key=lambda x: x.question_id)
         format_prompt = format_prompt_generation
     elif scenario == Scenario.testoutputprediction:

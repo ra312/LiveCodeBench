@@ -17,6 +17,8 @@ from lcb_runner.runner.scenario_router import (
 
 def main():
     args = get_args()
+    print("Available models:", LanguageModelStore.keys())
+    print("Requested model:", args.model)
 
     model = LanguageModelStore[args.model]
     benchmark, format_prompt = build_prompt_benchmark(args)
